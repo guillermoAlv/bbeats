@@ -80,10 +80,20 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
+  height: 300px;
+  flex-shrink: 0;
+  padding: 30px;
 }
 .searchbar__ai0OK:global(.__wab_instance) {
   position: relative;
   margin: 10px 0px 10px 10px;
+}
+.heroSuggestionBox {
+  display: block;
+  position: absolute;
+  left: 40px;
+  top: 130px;
+  background: #a0ef97;
 }
 .searchResults {
   display: flex;

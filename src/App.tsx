@@ -11,23 +11,30 @@ const searchClient = algoliasearch(
 );
 
 function App() {
-  console.log("App Created")
-  const node = useRef(document.createElement("ol"));
-  const snode = useRef(document.createElement("div"));
+  const header_suggestion_node = useRef(document.createElement("ol"));
+  const header_searchbar_node = useRef(document.createElement("div"));
+  const hero_suggestion_node = useRef(document.createElement("ol"));
+  const hero_searchbar_node = useRef(document.createElement("div"));
 
   function handleClick(e:any){
-    console.log(e.target)
-    console.log(node.current)
-    console.log(snode.current)
-    if (node.current.contains(e.target) || snode.current.contains(e.target)) {
+    if (header_suggestion_node.current.contains(e.target) || header_searchbar_node.current.contains(e.target)) {
       // inside click
-      console.log("inside click");
-      node.current.style.display ='block'
+      console.log("inside click header");
+      header_suggestion_node.current.style.display ='block'
+      hero_suggestion_node.current.style.display ='none'
+      return
+    }
+    if (hero_suggestion_node.current.contains(e.target) || hero_searchbar_node.current.contains(e.target)) {
+      // inside click
+      console.log("inside click hero");
+      hero_suggestion_node.current.style.display ='block'
+      header_suggestion_node.current.style.display ='none'
       return
     }
     // outside click
     console.log("outside click");
-    node.current.style.display ='none'
+    header_suggestion_node.current.style.display ='none'
+    hero_suggestion_node.current.style.display ='none'
     return
   }
   
@@ -41,7 +48,6 @@ function App() {
   }, []);
 
   const[query, setQuery] = useState("")
-  console.log(query)
   function StateResults({ searchState, searchResults, children }:any){
     if(searchState.query==="" || Object.keys(searchState).length===0){
       //console.log("No query")
@@ -56,23 +62,40 @@ function App() {
     }
   };
   const Results = connectStateResults(StateResults);
+  const Resultas = connectStateResults(StateResults);
 
-  function Hits({ hits, ...props }:any){
-    return (<ol ref={node}>
+  function HeaderHits({ hits, ...props }:any){
+    return (<ol style={{display: document.activeElement===header_searchbar_node.current.firstChild?'block':'none'}} ref={header_suggestion_node}>
       {hits.map((hit:any) => (
         <li key={hit.objectID} onClick={()=>setQuery(hit.name)}>{hit.name}</li>
       ))}
     </ol>)
       };
   
-  const CustomHits = connectHits(Hits);
+  const CustomHits = connectHits(HeaderHits);
+
+  function HeroHits({ hits, ...props }:any){
+    console.log(query)
+    return (<ol style={{display: document.activeElement===hero_searchbar_node.current.firstChild?'block':'none'}} ref={hero_suggestion_node}>
+      {hits.map((hit:any) => (
+        <li key={hit.objectID} onClick={()=>setQuery(hit.name)}>{hit.name}</li>
+      ))}
+    </ol>)
+      };
+  const CustomHitsHero = connectHits(HeroHits);
 
   function Autocomplete({ hits, currentRefinement, refine }: any){
-    return <div ref={snode}><SearchBar value={currentRefinement} onChange={(event:any) => refine(event.currentTarget.value)}/></div>
+    return <div style={{width:'100%', display:'flex', margin: '10px'}} ref={header_searchbar_node}><SearchBar value={currentRefinement} onChange={(event:any) => refine(event.currentTarget.value)}/></div>
   };
   const CustomAutocomplete = connectAutoComplete(Autocomplete);
+
+  function AutocompleteHero({ hits, currentRefinement, refine }: any){
+    return <div style={{width:'100%', display:'flex', margin: '10px'}} ref={hero_searchbar_node}><SearchBar value={currentRefinement} onChange={(event:any) => refine(event.currentTarget.value)}/></div>
+  };
+  const CustomAutocompleteHero = connectAutoComplete(AutocompleteHero);
+
   return (
-  <InstantSearch searchClient={searchClient} indexName="instant_search"><Homepage headerSuggestionBox={<div id="GER" onFocus={()=>console.log("Focus")}><Results><CustomHits/></Results></div>} headerSearchBar={<CustomAutocomplete/>} heroSearchBar={<div onClick={()=>setQuery("AM")}>JJ</div>} searchResults></Homepage></InstantSearch>);
+  <InstantSearch searchClient={searchClient} indexName="instant_search"><Homepage headerSuggestionBox={<Results><CustomHits/></Results>} heroSuggestionBox={<Resultas><CustomHitsHero/></Resultas>} headerSearchBar={<CustomAutocomplete/>} heroSearchBar={<CustomAutocompleteHero/>} searchResults></Homepage></InstantSearch>);
 }
 
 export default App;

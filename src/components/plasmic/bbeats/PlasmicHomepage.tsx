@@ -49,6 +49,7 @@ export type PlasmicHomepage__ArgsType = {
   headerSearchBar?: React.ReactNode;
   heroSearchBar?: React.ReactNode;
   searchResults?: React.ReactNode;
+  heroSuggestionBox?: React.ReactNode;
 };
 
 type ArgPropType = keyof PlasmicHomepage__ArgsType;
@@ -56,7 +57,8 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>(
   "headerSuggestionBox",
   "headerSearchBar",
   "heroSearchBar",
-  "searchResults"
+  "searchResults",
+  "heroSuggestionBox"
 );
 
 export type PlasmicHomepage__OverridesType = {
@@ -66,6 +68,7 @@ export type PlasmicHomepage__OverridesType = {
   burguerMobileMenuButton?: p.Flex<"svg">;
   headerSuggestionBox?: p.Flex<"div">;
   hero?: p.Flex<"div">;
+  heroSuggestionBox?: p.Flex<"div">;
   searchResults?: p.Flex<"div">;
   footer?: p.Flex<"footer">;
 };
@@ -75,6 +78,7 @@ export interface DefaultHomepageProps {
   headerSearchBar?: React.ReactNode;
   heroSearchBar?: React.ReactNode;
   searchResults?: React.ReactNode;
+  heroSuggestionBox?: React.ReactNode;
   className?: string;
 }
 
@@ -237,6 +241,17 @@ function PlasmicHomepage__RenderFunc(props: {
           </div>
 
           <div
+            data-plasmic-name={"heroSuggestionBox"}
+            data-plasmic-override={overrides.heroSuggestionBox}
+            className={classNames(defaultcss.all, sty.heroSuggestionBox)}
+          >
+            <p.PlasmicSlot
+              defaultContents={null}
+              value={args.heroSuggestionBox}
+            />
+          </div>
+
+          <div
             data-plasmic-name={"searchResults"}
             data-plasmic-override={overrides.searchResults}
             className={classNames(defaultcss.all, sty.searchResults)}
@@ -263,6 +278,7 @@ const PlasmicDescendants = {
     "burguerMobileMenuButton",
     "headerSuggestionBox",
     "hero",
+    "heroSuggestionBox",
     "searchResults",
     "footer"
   ],
@@ -276,6 +292,7 @@ const PlasmicDescendants = {
   burguerMobileMenuButton: ["burguerMobileMenuButton"],
   headerSuggestionBox: ["headerSuggestionBox"],
   hero: ["hero"],
+  heroSuggestionBox: ["heroSuggestionBox"],
   searchResults: ["searchResults"],
   footer: ["footer"]
 } as const;
@@ -290,6 +307,7 @@ type NodeDefaultElementType = {
   burguerMobileMenuButton: "svg";
   headerSuggestionBox: "div";
   hero: "div";
+  heroSuggestionBox: "div";
   searchResults: "div";
   footer: "footer";
 };
@@ -354,6 +372,7 @@ export const PlasmicHomepage = Object.assign(
     burguerMobileMenuButton: makeNodeComponent("burguerMobileMenuButton"),
     headerSuggestionBox: makeNodeComponent("headerSuggestionBox"),
     hero: makeNodeComponent("hero"),
+    heroSuggestionBox: makeNodeComponent("heroSuggestionBox"),
     searchResults: makeNodeComponent("searchResults"),
     footer: makeNodeComponent("footer"),
 
