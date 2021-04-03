@@ -1,0 +1,6 @@
+.root {
+  width: 100%;
+  position: relative;
+  min-width: 100px;
+  border-radius: 20px;
+}

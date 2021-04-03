@@ -1,0 +1,92 @@
+{
+  "platform": "react",
+  "code": {
+    "lang": "ts",
+    "scheme": "blackbox"
+  },
+  "style": {
+    "scheme": "css-modules",
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
+  },
+  "images": {
+    "scheme": "files",
+    "publicDir": "../../public",
+    "publicUrlPrefix": "/static/"
+  },
+  "tokens": {
+    "scheme": "theo",
+    "tokensFilePath": "plasmic-tokens.theo.json"
+  },
+  "srcDir": "src/components",
+  "defaultPlasmicDir": "./plasmic",
+  "projects": [
+    {
+      "projectId": "9hA39KtYg3BevSMNGZjo8u",
+      "projectName": "bbeats",
+      "version": "latest",
+      "cssFilePath": "plasmic/bbeats/plasmic_bbeats.module.css",
+      "components": [
+        {
+          "id": "1e7YzspgSepC",
+          "name": "Homepage",
+          "type": "managed",
+          "projectId": "9hA39KtYg3BevSMNGZjo8u",
+          "renderModuleFilePath": "plasmic/bbeats/PlasmicHomepage.tsx",
+          "importSpec": {
+            "modulePath": "Homepage.tsx"
+          },
+          "cssFilePath": "plasmic/bbeats/PlasmicHomepage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        },
+        {
+          "id": "Q-X2qK66L2",
+          "name": "Searchbar",
+          "type": "managed",
+          "projectId": "9hA39KtYg3BevSMNGZjo8u",
+          "renderModuleFilePath": "plasmic/bbeats/PlasmicSearchbar.tsx",
+          "importSpec": {
+            "modulePath": "Searchbar.tsx"
+          },
+          "cssFilePath": "plasmic/bbeats/PlasmicSearchbar.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "jvpz07dp-U",
+          "name": "BrandCard",
+          "type": "managed",
+          "projectId": "9hA39KtYg3BevSMNGZjo8u",
+          "renderModuleFilePath": "plasmic/bbeats/PlasmicBrandCard.tsx",
+          "importSpec": {
+            "modulePath": "BrandCard.tsx"
+          },
+          "cssFilePath": "plasmic/bbeats/PlasmicBrandCard.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        }
+      ],
+      "icons": [
+        {
+          "id": "5StWiLnElt",
+          "name": "ListasvgIcon",
+          "moduleFilePath": "plasmic/bbeats/icons/PlasmicIcon__Listasvg.tsx"
+        }
+      ],
+      "images": [],
+      "projectApiToken": "ckWI7BNCDfQCpsJMsEGyioih2XgRnBv7g0JsPcDpnWxrevjmpWI7pvn0FWrPVoJNRqlLqpAzVnFyV3Jd3h9njw"
+    }
+  ],
+  "globalVariants": {
+    "variantGroups": [
+      {
+        "id": "w9Z1u5YsRAUO",
+        "name": "Screen",
+        "projectId": "9hA39KtYg3BevSMNGZjo8u",
+        "contextFilePath": "plasmic/bbeats/PlasmicGlobalVariant__Screen.tsx"
+      }
+    ]
+  },
+  "cliVersion": "0.1.130",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.130/dist/plasmic.schema.json"
+}
