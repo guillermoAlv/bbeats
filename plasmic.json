@@ -73,7 +73,13 @@
           "moduleFilePath": "plasmic/bbeats/icons/PlasmicIcon__Listasvg.tsx"
         }
       ],
-      "images": [],
+      "images": [
+        {
+          "id": "AvkCx1DoR",
+          "name": "hero_image.jpeg",
+          "filePath": "plasmic/bbeats/images/heroImagejpeg.jpeg"
+        }
+      ],
       "projectApiToken": "ckWI7BNCDfQCpsJMsEGyioih2XgRnBv7g0JsPcDpnWxrevjmpWI7pvn0FWrPVoJNRqlLqpAzVnFyV3Jd3h9njw"
     }
   ],

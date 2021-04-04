@@ -68,6 +68,7 @@ export type PlasmicHomepage__OverridesType = {
   burguerMobileMenuButton?: p.Flex<"svg">;
   headerSuggestionBox?: p.Flex<"div">;
   hero?: p.Flex<"div">;
+  brandsBeats?: p.Flex<"div">;
   heroSuggestionBox?: p.Flex<"div">;
   searchResults?: p.Flex<"div">;
   footer?: p.Flex<"footer">;
@@ -108,162 +109,225 @@ function PlasmicHomepage__RenderFunc(props: {
             sty.root
           )}
         >
-          <header
-            data-plasmic-name={"header"}
-            data-plasmic-override={overrides.header}
-            className={classNames(defaultcss.all, sty.header)}
-          >
-            <div
-              data-plasmic-name={"logoText"}
-              data-plasmic-override={overrides.logoText}
-              className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
-                sty.logoText
-              )}
+          <div className={classNames(defaultcss.all, sty.box__zaK0T)}>
+            <header
+              data-plasmic-name={"header"}
+              data-plasmic-override={overrides.header}
+              className={classNames(defaultcss.all, sty.header)}
             >
-              {"Brands Beats"}
-            </div>
-
-            <p.PlasmicSlot
-              defaultContents={
-                <Searchbar
-                  className={classNames("__wab_instance", sty.searchbar__gYPzb)}
-                />
-              }
-              value={args.headerSearchBar}
-            />
-
-            {(
-              hasVariant(globalVariants, "screen", "desktop") ? true : false
-            ) ? (
-              <button
-                className={classNames(
-                  defaultcss.button,
-                  defaultcss.__wab_text,
-                  sty.button__udyYs
-                )}
-              >
-                {"Contacto"}
-              </button>
-            ) : null}
-            {(
-              hasVariant(globalVariants, "screen", "desktop") ? true : false
-            ) ? (
-              <button
-                className={classNames(
-                  defaultcss.button,
-                  defaultcss.__wab_text,
-                  sty.button__dpLRk
-                )}
-              >
-                {"FAQ"}
-              </button>
-            ) : null}
-            {(
-              hasVariant(globalVariants, "screen", "desktop") ? true : false
-            ) ? (
-              <button
-                className={classNames(
-                  defaultcss.button,
-                  defaultcss.__wab_text,
-                  sty.button__qPjKd
-                )}
-              >
-                {"Button Text"}
-              </button>
-            ) : null}
-            {(
-              hasVariant(globalVariants, "screen", "desktop") ? true : false
-            ) ? (
-              <button
-                className={classNames(
-                  defaultcss.button,
-                  defaultcss.__wab_text,
-                  sty.button__hkr7C
-                )}
-              >
-                {"Sobre nosotros"}
-              </button>
-            ) : null}
-            {(
-              hasVariant(globalVariants, "screen", "desktop") ? true : false
-            ) ? (
-              <button
-                className={classNames(
-                  defaultcss.button,
-                  defaultcss.__wab_text,
-                  sty.button___6Z4O9
-                )}
-              >
-                {"Suscríbete"}
-              </button>
-            ) : null}
-            {(
-              hasVariant(globalVariants, "screen", "desktop") ? false : true
-            ) ? (
-              <ListasvgIcon
-                data-plasmic-name={"burguerMobileMenuButton"}
-                data-plasmic-override={overrides.burguerMobileMenuButton}
+              <div
+                data-plasmic-name={"logoText"}
+                data-plasmic-override={overrides.logoText}
                 className={classNames(
                   defaultcss.all,
-                  sty.burguerMobileMenuButton
+                  defaultcss.__wab_text,
+                  sty.logoText
                 )}
-                role={"img"}
+              >
+                {"Brands Beats"}
+              </div>
+
+              <p.PlasmicSlot
+                defaultContents={
+                  <Searchbar
+                    className={classNames(
+                      "__wab_instance",
+                      sty.searchbar__gYPzb
+                    )}
+                  />
+                }
+                value={args.headerSearchBar}
               />
-            ) : null}
+
+              {(
+                hasVariant(globalVariants, "screen", "desktop") ? true : false
+              ) ? (
+                <button
+                  className={classNames(
+                    defaultcss.button,
+                    defaultcss.__wab_text,
+                    sty.button__udyYs
+                  )}
+                >
+                  {"Contacto"}
+                </button>
+              ) : null}
+              {(
+                hasVariant(globalVariants, "screen", "desktop") ? true : false
+              ) ? (
+                <button
+                  className={classNames(
+                    defaultcss.button,
+                    defaultcss.__wab_text,
+                    sty.button__dpLRk
+                  )}
+                >
+                  {"FAQ"}
+                </button>
+              ) : null}
+              {(
+                hasVariant(globalVariants, "screen", "desktop") ? true : false
+              ) ? (
+                <button
+                  className={classNames(
+                    defaultcss.button,
+                    defaultcss.__wab_text,
+                    sty.button__qPjKd
+                  )}
+                >
+                  {"Button Text"}
+                </button>
+              ) : null}
+              {(
+                hasVariant(globalVariants, "screen", "desktop") ? true : false
+              ) ? (
+                <button
+                  className={classNames(
+                    defaultcss.button,
+                    defaultcss.__wab_text,
+                    sty.button__hkr7C
+                  )}
+                >
+                  {"Sobre nosotros"}
+                </button>
+              ) : null}
+              {(
+                hasVariant(globalVariants, "screen", "desktop") ? true : false
+              ) ? (
+                <button
+                  className={classNames(
+                    defaultcss.button,
+                    defaultcss.__wab_text,
+                    sty.button___6Z4O9
+                  )}
+                >
+                  {"Suscríbete"}
+                </button>
+              ) : null}
+              {(
+                hasVariant(globalVariants, "screen", "desktop") ? false : true
+              ) ? (
+                <ListasvgIcon
+                  data-plasmic-name={"burguerMobileMenuButton"}
+                  data-plasmic-override={overrides.burguerMobileMenuButton}
+                  className={classNames(
+                    defaultcss.all,
+                    sty.burguerMobileMenuButton
+                  )}
+                  role={"img"}
+                />
+              ) : null}
+
+              <div
+                data-plasmic-name={"headerSuggestionBox"}
+                data-plasmic-override={overrides.headerSuggestionBox}
+                className={classNames(defaultcss.all, sty.headerSuggestionBox)}
+              >
+                <p.PlasmicSlot
+                  defaultContents={null}
+                  value={args.headerSuggestionBox}
+                />
+              </div>
+            </header>
 
             <div
-              data-plasmic-name={"headerSuggestionBox"}
-              data-plasmic-override={overrides.headerSuggestionBox}
-              className={classNames(defaultcss.all, sty.headerSuggestionBox)}
+              data-plasmic-name={"hero"}
+              data-plasmic-override={overrides.hero}
+              className={classNames(defaultcss.all, sty.hero)}
+            >
+              <div className={classNames(defaultcss.all, sty.box__xtMvh)}>
+                <div className={classNames(defaultcss.all, sty.box__sl2Fp)}>
+                  <div
+                    data-plasmic-name={"brandsBeats"}
+                    data-plasmic-override={overrides.brandsBeats}
+                    className={classNames(
+                      defaultcss.all,
+                      defaultcss.__wab_text,
+                      sty.brandsBeats
+                    )}
+                  >
+                    {"Brands Beats"}
+                  </div>
+                </div>
+
+                <div className={classNames(defaultcss.all, sty.box__k5Ifp)}>
+                  <div
+                    className={classNames(
+                      defaultcss.all,
+                      defaultcss.__wab_text,
+                      sty.box__fDPv9
+                    )}
+                  >
+                    {"Todos los ecommerce independientes de España y Portugal"}
+                  </div>
+                </div>
+
+                <div className={classNames(defaultcss.all, sty.box__s5Bs)}>
+                  <div
+                    className={classNames(
+                      defaultcss.all,
+                      defaultcss.__wab_text,
+                      sty.box___0R4Il
+                    )}
+                  >
+                    {"Encuentra las marcas que cambian el mundo"}
+                  </div>
+                </div>
+
+                {(
+                  hasVariant(globalVariants, "screen", "desktop") ? true : false
+                ) ? (
+                  <div className={classNames(defaultcss.all, sty.box__drz7N)}>
+                    <p.PlasmicSlot
+                      defaultContents={
+                        <Searchbar
+                          className={classNames(
+                            "__wab_instance",
+                            sty.searchbar__ai0OK
+                          )}
+                        />
+                      }
+                      value={args.heroSearchBar}
+                    />
+                  </div>
+                ) : null}
+                {(
+                  hasVariant(globalVariants, "screen", "desktop") ? true : false
+                ) ? (
+                  <div
+                    data-plasmic-name={"heroSuggestionBox"}
+                    data-plasmic-override={overrides.heroSuggestionBox}
+                    className={classNames(
+                      defaultcss.all,
+                      sty.heroSuggestionBox
+                    )}
+                  >
+                    <p.PlasmicSlot
+                      defaultContents={null}
+                      value={args.heroSuggestionBox}
+                    />
+                  </div>
+                ) : null}
+              </div>
+            </div>
+
+            <div
+              data-plasmic-name={"searchResults"}
+              data-plasmic-override={overrides.searchResults}
+              className={classNames(defaultcss.all, sty.searchResults)}
             >
               <p.PlasmicSlot
                 defaultContents={null}
-                value={args.headerSuggestionBox}
+                value={args.searchResults}
               />
             </div>
-          </header>
 
-          <div
-            data-plasmic-name={"hero"}
-            data-plasmic-override={overrides.hero}
-            className={classNames(defaultcss.all, sty.hero)}
-          >
-            <p.PlasmicSlot
-              defaultContents={
-                <Searchbar
-                  className={classNames("__wab_instance", sty.searchbar__ai0OK)}
-                />
-              }
-              value={args.heroSearchBar}
+            <footer
+              data-plasmic-name={"footer"}
+              data-plasmic-override={overrides.footer}
+              className={classNames(defaultcss.all, sty.footer)}
             />
           </div>
-
-          <div
-            data-plasmic-name={"heroSuggestionBox"}
-            data-plasmic-override={overrides.heroSuggestionBox}
-            className={classNames(defaultcss.all, sty.heroSuggestionBox)}
-          >
-            <p.PlasmicSlot
-              defaultContents={null}
-              value={args.heroSuggestionBox}
-            />
-          </div>
-
-          <div
-            data-plasmic-name={"searchResults"}
-            data-plasmic-override={overrides.searchResults}
-            className={classNames(defaultcss.all, sty.searchResults)}
-          >
-            <p.PlasmicSlot defaultContents={null} value={args.searchResults} />
-          </div>
-
-          <footer
-            data-plasmic-name={"footer"}
-            data-plasmic-override={overrides.footer}
-            className={classNames(defaultcss.all, sty.footer)}
-          />
         </div>
       </div>
     </React.Fragment>
@@ -278,6 +342,7 @@ const PlasmicDescendants = {
     "burguerMobileMenuButton",
     "headerSuggestionBox",
     "hero",
+    "brandsBeats",
     "heroSuggestionBox",
     "searchResults",
     "footer"
@@ -291,7 +356,8 @@ const PlasmicDescendants = {
   logoText: ["logoText"],
   burguerMobileMenuButton: ["burguerMobileMenuButton"],
   headerSuggestionBox: ["headerSuggestionBox"],
-  hero: ["hero"],
+  hero: ["hero", "brandsBeats", "heroSuggestionBox"],
+  brandsBeats: ["brandsBeats"],
   heroSuggestionBox: ["heroSuggestionBox"],
   searchResults: ["searchResults"],
   footer: ["footer"]
@@ -307,6 +373,7 @@ type NodeDefaultElementType = {
   burguerMobileMenuButton: "svg";
   headerSuggestionBox: "div";
   hero: "div";
+  brandsBeats: "div";
   heroSuggestionBox: "div";
   searchResults: "div";
   footer: "footer";
@@ -372,6 +439,7 @@ export const PlasmicHomepage = Object.assign(
     burguerMobileMenuButton: makeNodeComponent("burguerMobileMenuButton"),
     headerSuggestionBox: makeNodeComponent("headerSuggestionBox"),
     hero: makeNodeComponent("hero"),
+    brandsBeats: makeNodeComponent("brandsBeats"),
     heroSuggestionBox: makeNodeComponent("heroSuggestionBox"),
     searchResults: makeNodeComponent("searchResults"),
     footer: makeNodeComponent("footer"),

@@ -8,4 +8,7 @@
 .img {
   position: relative;
   object-fit: cover;
+  width: 260px;
+  height: 173px;
+  flex-shrink: 0;
 }

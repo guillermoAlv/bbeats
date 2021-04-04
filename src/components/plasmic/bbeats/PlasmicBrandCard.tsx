@@ -41,10 +41,14 @@ export const PlasmicBrandCard__VariantProps = new Array<VariantPropType>();
 
 export type PlasmicBrandCard__ArgsType = {
   brandImage?: React.ReactNode;
+  brandName?: React.ReactNode;
 };
 
 type ArgPropType = keyof PlasmicBrandCard__ArgsType;
-export const PlasmicBrandCard__ArgProps = new Array<ArgPropType>("brandImage");
+export const PlasmicBrandCard__ArgProps = new Array<ArgPropType>(
+  "brandImage",
+  "brandName"
+);
 
 export type PlasmicBrandCard__OverridesType = {
   root?: p.Flex<"div">;
@@ -53,6 +57,7 @@ export type PlasmicBrandCard__OverridesType = {
 
 export interface DefaultBrandCardProps {
   brandImage?: React.ReactNode;
+  brandName?: React.ReactNode;
   className?: string;
 }
 
@@ -84,6 +89,8 @@ function PlasmicBrandCard__RenderFunc(props: {
         }
         value={args.brandImage}
       />
+
+      <p.PlasmicSlot defaultContents={null} value={args.brandName} />
     </div>
   ) as React.ReactElement | null;
 }

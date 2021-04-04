@@ -8,6 +8,15 @@
   min-height: 0;
   background: #ffffff;
 }
+.box__zaK0T {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  height: 100%;
+  min-height: 0;
+}
 .header {
   display: flex;
   position: relative;
@@ -69,20 +78,87 @@
   align-items: stretch;
   justify-content: flex-start;
   min-width: 80px;
-  left: 300px;
-  top: 80px;
+  left: 80px;
+  top: 60px;
   z-index: 3;
-  background: #e09090;
+  border-radius: 20px;
+  background: #ffffff;
 }
 .hero {
   display: flex;
   position: relative;
   flex-direction: column;
   align-items: stretch;
-  justify-content: flex-start;
+  justify-content: center;
   height: 300px;
   flex-shrink: 0;
   padding: 30px;
+  background: url("./images/heroImagejpeg.jpeg") left 0% top 20% / cover;
+}
+@media (min-width: 641px) {
+  .hero {
+    height: 500px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+}
+.box__xtMvh {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+@media (min-width: 641px) {
+  .box__xtMvh {
+    width: 689px;
+    height: 252px;
+    flex-shrink: 0;
+  }
+}
+.box__sl2Fp {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.brandsBeats {
+  position: relative;
+  font-size: 46px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.box__k5Ifp {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.box__fDPv9 {
+  position: relative;
+  font-size: 18px;
+  color: #ffffff;
+}
+.box__s5Bs {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.box___0R4Il {
+  position: relative;
+  font-size: 18px;
+  color: #ffffff;
+}
+.box__drz7N {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
 }
 .searchbar__ai0OK:global(.__wab_instance) {
   position: relative;
@@ -90,10 +166,11 @@
 }
 .heroSuggestionBox {
   display: block;
-  position: absolute;
-  left: 40px;
-  top: 130px;
-  background: #a0ef97;
+  position: relative;
+  left: auto;
+  top: auto;
+  border-radius: 20px;
+  background: #ffffff;
 }
 .searchResults {
   display: flex;
@@ -102,6 +179,7 @@
   align-items: stretch;
   justify-content: flex-start;
   z-index: 1;
+  flex-grow: 2;
 }
 .footer {
   display: flex;

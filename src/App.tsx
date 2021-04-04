@@ -1,34 +1,48 @@
 import './App.css';
 import Homepage from './components/Homepage'
 import SearchBar from './components/Searchbar'
-import {InstantSearch, connectAutoComplete, connectHits, connectStateResults  } from 'react-instantsearch-dom';
+import BrandCard from './components/BrandCard'
+import {InstantSearch, connectAutoComplete, connectHits, connectStateResults, Configure, Hits } from 'react-instantsearch-dom';
 import algoliasearch from 'algoliasearch';
 import { useState, useEffect, useRef } from 'react';
 
 const searchClient = algoliasearch(
-  'latency',
-  '6be0576ff61c053d5f9a3225e2a90f76'
+  'E5ACT1VI4D',
+  '58c5723bb97942db9b754bf244b1da75'
 );
 
+function Hit(props: any) {
+  //var cat = ""
+  console.log(props['hit'])
+
+  return <BrandCard brandName={props['hit']['name']} brandImage={<img style={{width: "260px"}} src={props['hit']['url_site_image']} alt="Girl in a jacket"></img>}></BrandCard>
+}
+
 function App() {
-  const header_suggestion_node = useRef(document.createElement("ol"));
+  const header_suggestion_node = useRef(document.createElement("div"));
   const header_searchbar_node = useRef(document.createElement("div"));
-  const hero_suggestion_node = useRef(document.createElement("ol"));
+  const hero_suggestion_node = useRef(document.createElement("div"));
   const hero_searchbar_node = useRef(document.createElement("div"));
 
   function handleClick(e:any){
     if (header_suggestion_node.current.contains(e.target) || header_searchbar_node.current.contains(e.target)) {
-      // inside click
-      console.log("inside click header");
-      header_suggestion_node.current.style.display ='block'
-      hero_suggestion_node.current.style.display ='none'
+      if(header_searchbar_node.current.firstElementChild!=null){
+        if(header_searchbar_node.current.firstElementChild!.getAttribute('value')!==""){
+          header_suggestion_node.current.style.display ='block'
+          hero_suggestion_node.current.style.display ='none'
+        }else{
+          header_suggestion_node.current.style.display ='none'
+        }}
       return
     }
     if (hero_suggestion_node.current.contains(e.target) || hero_searchbar_node.current.contains(e.target)) {
-      // inside click
-      console.log("inside click hero");
-      hero_suggestion_node.current.style.display ='block'
-      header_suggestion_node.current.style.display ='none'
+      if(hero_searchbar_node.current.firstElementChild!=null){
+        if(hero_searchbar_node.current.firstElementChild!.getAttribute('value')!==""){
+          hero_suggestion_node.current.style.display ='block'
+          header_suggestion_node.current.style.display ='none'
+        }else{
+          hero_suggestion_node.current.style.display ='none'
+        }}
       return
     }
     // outside click
@@ -48,46 +62,63 @@ function App() {
   }, []);
 
   const[query, setQuery] = useState("")
-  function StateResults({ searchState, searchResults, children }:any){
+  function StateResults({ searchState, searchResults, children, isSearchStalled  }:any){
+    if(header_searchbar_node.current!==null&&hero_searchbar_node.current!==null){
+    if(header_searchbar_node.current.contains(document.activeElement)){
+      header_suggestion_node.current.style.display ='block'
+      hero_suggestion_node.current.style.display ='none'
+    }
+    if(hero_searchbar_node.current.contains(document.activeElement)){
+      hero_suggestion_node.current.style.display ='block'
+      header_suggestion_node.current.style.display ='none'
+    }
     if(searchState.query==="" || Object.keys(searchState).length===0){
-      //console.log("No query")
+      console.log("No query")
       return null
     }
     else if(searchResults && searchResults.nbHits !== 0){
-      //console.log("Results")
+      console.log("Results")
       return children
     }else{
-      //console.log("No results")
+      console.log("No results")
       return <div>No results have been found for {searchState.query}.</div>
     }
-  };
+  }else{return null}};
   const Results = connectStateResults(StateResults);
   const Resultas = connectStateResults(StateResults);
 
+  function StateResultsSearch({ searchState, searchResults, children }:any){
+    if(query!==""){
+      return children
+    }else{
+      return <div>No results have been found for {searchState.query}.</div>
+    }
+  };
+  const SearchResults = connectStateResults(StateResultsSearch);
+
   function HeaderHits({ hits, ...props }:any){
-    return (<ol style={{display: document.activeElement===header_searchbar_node.current.firstChild?'block':'none'}} ref={header_suggestion_node}>
-      {hits.map((hit:any) => (
-        <li key={hit.objectID} onClick={()=>setQuery(hit.name)}>{hit.name}</li>
+    return (<ul style={{listStyleType:"none", paddingLeft:"20px"}}>
+      {hits.slice(0, 5).map((hit:any) => (
+        <li key={hit.objectID} style={{marginRight: '10px'}} onClick={()=>{header_suggestion_node.current.style.display ='none';setQuery(hit.tags[0])}}>{hit.tags[0]}</li>
       ))}
-    </ol>)
+    </ul>)
       };
   
   const CustomHits = connectHits(HeaderHits);
 
   function HeroHits({ hits, ...props }:any){
-    console.log(query)
-    return (<ol style={{display: document.activeElement===hero_searchbar_node.current.firstChild?'block':'none'}} ref={hero_suggestion_node}>
-      {hits.map((hit:any) => (
-        <li key={hit.objectID} onClick={()=>setQuery(hit.name)}>{hit.name}</li>
+    return (<ul style={{listStyleType:"none", paddingLeft:"20px"}}>
+      {hits.slice(0, 5).map((hit:any) => (
+        <li key={hit.objectID} style={{marginRight: '10px'}} onClick={()=>{hero_suggestion_node.current.style.display ='none';setQuery(hit.tags[0])}}>{hit.tags[0]}</li>
       ))}
-    </ol>)
+    </ul>)
       };
   const CustomHitsHero = connectHits(HeroHits);
 
   function Autocomplete({ hits, currentRefinement, refine }: any){
     return <div style={{width:'100%', display:'flex', margin: '10px'}} ref={header_searchbar_node}><SearchBar value={currentRefinement} onChange={(event:any) => refine(event.currentTarget.value)}/></div>
   };
-  const CustomAutocomplete = connectAutoComplete(Autocomplete);
+  var CustomAutocomplete = connectAutoComplete(Autocomplete);
 
   function AutocompleteHero({ hits, currentRefinement, refine }: any){
     return <div style={{width:'100%', display:'flex', margin: '10px'}} ref={hero_searchbar_node}><SearchBar value={currentRefinement} onChange={(event:any) => refine(event.currentTarget.value)}/></div>
@@ -95,7 +126,15 @@ function App() {
   const CustomAutocompleteHero = connectAutoComplete(AutocompleteHero);
 
   return (
-  <InstantSearch searchClient={searchClient} indexName="instant_search"><Homepage headerSuggestionBox={<Results><CustomHits/></Results>} heroSuggestionBox={<Resultas><CustomHitsHero/></Resultas>} headerSearchBar={<CustomAutocomplete/>} heroSearchBar={<CustomAutocompleteHero/>} searchResults></Homepage></InstantSearch>);
+  <InstantSearch searchClient={searchClient} indexName="brands_beats"><Homepage headerSuggestionBox={<div ref={header_suggestion_node}><Results><CustomHits/></Results></div>} heroSuggestionBox={<div ref={hero_suggestion_node}><Resultas><CustomHitsHero/></Resultas></div>} headerSearchBar={<CustomAutocomplete/>} heroSearchBar={<CustomAutocompleteHero/>} searchResults={
+  <InstantSearch searchClient={searchClient} indexName="brands_beats">
+  
+  
+  <SearchResults>
+  <Configure query={query} hitsPerPage={6}distinct/>
+  <Hits hitComponent={Hit}/>
+  </SearchResults>
+</InstantSearch>}></Homepage></InstantSearch>);
 }
 
 export default App;
